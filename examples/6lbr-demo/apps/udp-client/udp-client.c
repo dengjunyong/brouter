@@ -122,6 +122,7 @@ timeout_handler(void)
   uint16_t dest_port = use_user_dest_addr ? user_dest_port : CETIC_6LBR_NODE_INFO_PORT;
   int has_dest=0;
   uip_ipaddr_t * defrt;
+    rpl_dag_t *dag; 
 
   if ( use_user_dest_addr ) {
     uip_ipaddr_copy(&dest_addr, &user_dest_addr);
@@ -131,7 +132,7 @@ timeout_handler(void)
     if(addr_desc != NULL) {
       globaladdr = &addr_desc->ipaddr;
 #if UIP_CONF_IPV6_RPL
-      rpl_dag_t *dag = rpl_get_any_dag();
+      dag = rpl_get_any_dag();
       if(dag) {
         uip_ipaddr_copy(&dest_addr, globaladdr);
         memcpy(&dest_addr.u8[8], &dag->dag_id.u8[8], sizeof(uip_ipaddr_t) / 2);
@@ -187,7 +188,7 @@ timeout_handler(void)
         PRINT6ADDR(&client_conn->ripaddr);
         i = sprintf(buf, "%d | ", ++seq_id);
 #if UIP_CONF_IPV6_RPL
-        rpl_dag_t *dag = rpl_get_any_dag();
+        dag = rpl_get_any_dag();
         if(dag && dag->instance->def_route) {
           add_ipaddr(buf + i, &dag->instance->def_route->ipaddr);
         } else {

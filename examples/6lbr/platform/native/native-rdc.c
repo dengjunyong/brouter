@@ -184,9 +184,10 @@ send_packet(mac_callback_t sent, void *ptr)
       sid = setup_callback(sent, ptr);
       if (sid != -1) {
         LOG6LBR_PRINTF(PACKET, RADIO_OUT, "write: %d (sid: %d, cb: %d)\n", packetbuf_datalen(), sid, callback_count);
-        if (LOG6LBR_COND(DUMP, RADIO_OUT)) {
-          uint8_t *data = packetbuf_dataptr();
-          int len = packetbuf_datalen();
+        //if (LOG6LBR_COND(DUMP, RADIO_OUT)) {
+        if (1) {
+          uint8_t *data = packetbuf_hdrptr();
+          int len = packetbuf_totlen();
           int i;
       #if WIRESHARK_IMPORT_FORMAT
           printf("0000");

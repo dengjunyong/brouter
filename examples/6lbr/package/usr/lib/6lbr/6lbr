@@ -65,6 +65,7 @@ export CETIC_6LBR_CONF=$CFG
 # Bootstrapping
 
 if [ "$LIB_6LBR" != "" ]; then
+    echo $LIB_6LBR
 	. $LIB_6LBR/6lbr-functions
 elif [ -e `dirname $0`/6lbr-functions ]; then
 	. `dirname $0`/6lbr-functions

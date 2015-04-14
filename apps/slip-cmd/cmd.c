@@ -54,6 +54,7 @@ void
 cmd_input(const uint8_t *data, int data_len)
 {
   int i;
+  char text[30];
   for(i = 0; cmd_handlers[i] != NULL; i++) {
     if(cmd_handlers[i](data, data_len)) {
       /* Command has been handled */
@@ -62,7 +63,6 @@ cmd_input(const uint8_t *data, int data_len)
   }
 
   /* Unknown command */
-  char text[30];
   sprintf(text, "EUnknown command %x%x (%d)", data[0], data[1], data_len);
   cmd_send((uint8_t *)text, strlen(text));
 }

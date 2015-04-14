@@ -117,11 +117,12 @@ size_t
 coap_set_option_header(unsigned int delta, size_t length, uint8_t *buffer)
 {
   size_t written = 0;
+  unsigned int *x;
 
   buffer[0] = coap_option_nibble(delta)<<4 | coap_option_nibble(length);
 
   /* avoids code duplication without function overhead */
-  unsigned int *x = &delta;
+  x = &delta;
   do
   {
     if (*x>268)

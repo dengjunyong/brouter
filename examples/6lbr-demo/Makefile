@@ -27,6 +27,11 @@ CC2538DK_FW=bin
 # End of user configuration section
 
 all: $(PROJECT)
+aa:
+	@echo $(CONTIKI_SOURCEFILES)
+	@echo $(APP_SOURCES)
+	@echo $(APPS)
+	@echo $(PROJECTDIRS)
 
 CONTIKI?=../..
 

@@ -1,5 +1,21 @@
 CONTIKI_PROJECT=slip-radio
 all: $(CONTIKI_PROJECT)
+aa:
+	echo $(target_makefile)
+#	@echo $(CONTIKI_SOURCEFILES)
+#	@echo $(CONTIKI_OBJECTFILES)
+	echo $(UIP_CONF_IPV6)
+	@echo $(PROJECT_SOURCEFILES)
+	@echo $(PROJECT_LIBRARIES)
+	@echo $(CONTIKIFILES)
+	@echo $(APP_SOURCES)
+	@echo $(DSC_SOURCES)
+	@echo $(MODULES_SOURCES)
+	@echo $(MODULES)
+	@echo $(UNIQUEMODULES)
+	@echo $(MODULESSUBST)
+	@echo $(MODULEDIRS)
+	@echo $(SOURCEDIRS)
 APPS = slip-cmd
 
 ifeq ($(TARGET),)

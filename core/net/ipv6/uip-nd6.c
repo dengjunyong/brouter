@@ -903,6 +903,7 @@ uip_nd6_rs_output(void)
 void
 ra_input(void)
 {
+    uip_lladdr_t const *lladdr;
   PRINTF("Received RA from");
   PRINT6ADDR(&UIP_IP_BUF->srcipaddr);
   PRINTF("to");
@@ -961,7 +962,7 @@ ra_input(void)
         if(nbr->state == NBR_INCOMPLETE) {
           nbr->state = NBR_STALE;
         }
-        uip_lladdr_t const *lladdr = uip_ds6_nbr_get_ll(nbr);
+        lladdr = uip_ds6_nbr_get_ll(nbr);
         if(memcmp(&nd6_opt_llao[UIP_ND6_OPT_DATA_OFFSET],
 		  lladdr, UIP_LLADDR_LEN) != 0) {
           memcpy((void *)lladdr, &nd6_opt_llao[UIP_ND6_OPT_DATA_OFFSET],
